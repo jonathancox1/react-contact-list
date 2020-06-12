@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Form from './components/Form';
+import ContactList from './components/ContactList';
+import 'bootstrap/dist/css/bootstrap.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      contacts: [
+      ]
+    }
+  }
+
+  onFormSubmit = (data) => {
+    this.setState({
+      contacts: this.state.contacts.concat(data)
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="row m-5">
+          <div className="col-md-6">
+            <Form appPropCall={this.onFormSubmit}></Form>
+          </div>
+          <div className="col-md-6">
+            <h2>Contacts</h2>
+            <hr />
+            <ContactList contactList={this.state.contacts}></ContactList>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
