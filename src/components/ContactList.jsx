@@ -9,9 +9,10 @@ export default class ContactList extends Component {
         }
     }
 
-    getDe() {
-        this.setState({ contacts: this.state.contacts.concat(this.props.contactList) })
+    removeContact = (index) => {
+        this.props.delete(index);
     }
+
 
     render() {
         return (
@@ -19,8 +20,8 @@ export default class ContactList extends Component {
                 {this.props.contactList.map((contact, index) => {
                     return (
                         <>
-                            <ContactCard contact={contact} key={index}></ContactCard>
                             {contact.name}
+                            <ContactCard contact={contact} key={index} id={index} delete={this.removeContact}></ContactCard>
                         </>
                     )
                 })}

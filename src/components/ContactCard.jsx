@@ -12,6 +12,10 @@ export default class ContactCard extends Component {
         this.setState({ hidden: !this.state.hidden })
     }
 
+    deleteContactCard = () => {
+        this.props.delete(this.props.id);
+    }
+
     render() {
         let innerClass = 'd-none';
         if (this.state.hidden === false) {
@@ -19,15 +23,17 @@ export default class ContactCard extends Component {
         }
         return (
             <>
-                <div className={innerClass}>
-                    {this.props.contact.name}
-                    {this.props.contact.email}
-                    {this.props.contact.phone}
-                    {this.props.contact.zip}
-                    {this.props.contact.state}
-                </div>
                 <div>
-                    <button onClick={this.toggle}>Full Contact</button>
+                    <button onClick={this.toggle}>Full Contact</button><button onClick={this.deleteContactCard}>X</button>
+                </div>
+                <div className={innerClass}>
+                    email: {this.props.contact.email}
+                    <br />
+                    phone: {this.props.contact.phone}
+                    <br />
+                    zip code: {this.props.contact.zip}
+                    <br />
+                    state: {this.props.contact.state}
                 </div>
             </>
         )
