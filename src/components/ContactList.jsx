@@ -22,6 +22,7 @@ export default class ContactList extends Component {
                     return (
                         <>
                             <ContactCard contact={contact} key={index} id={index} delete={this.removeContact}></ContactCard>
+                            <hr />
                         </>
                     )
                 })}

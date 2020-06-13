@@ -24,7 +24,7 @@ export default class ContactCard extends Component {
         return (
             <div className="row">
                 <div className="col-md-6">
-                    {this.props.contact.name}
+                    <b>{this.props.contact.name}</b>
                     <div className={innerClass}>
                         email: {this.props.contact.email}
                         <br />

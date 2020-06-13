@@ -49,14 +49,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="row m-5">
-          <div className="col-md-6">
-            <Form appPropCall={this.onFormSubmit}></Form>
-          </div>
-          <div className="col-md-6">
-            <h2>Contacts</h2>
-            <hr />
-            <ContactList contactList={this.state.contacts} delete={this.deleteContact}></ContactList>
+        <div className="col-md-8 mx-auto">
+          <div className="row mt-5 p-5 border">
+            <div className="col mx-auto">
+              <Form appPropCall={this.onFormSubmit}></Form>
+            </div>
+            <div className="col mx-auto">
+              <h2>Contacts</h2>
+              <hr />
+              <ContactList contactList={this.state.contacts} delete={this.deleteContact}></ContactList>
+            </div>
           </div>
         </div>
       </div>
