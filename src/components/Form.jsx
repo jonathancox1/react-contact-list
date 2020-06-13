@@ -26,8 +26,6 @@ export default class Form extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let contacts = [this.state]
-        console.log(contacts)
         this.props.appPropCall(this.state);
         this.setState({
             name: '',
@@ -38,14 +36,29 @@ export default class Form extends Component {
         })
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.contactToUpdate !== this.props.contactToUpdate && this.props.contactToUpdate.name !== this.state.name) {
+            console.log(prevProps)
+            let contact = this.props.contactToUpdate
+            this.setState({
+                name: contact.name,
+                email: contact.email,
+                phone: contact.phone,
+                state: contact.zip,
+                zip: contact.zip
+            })
+        }
+    }
+
     render() {
         return (
-            <div className="row">
-                <form onSubmit={this.onSubmit}>
-                    {/* <input type="text" id="name" name="zip"></input> */}
+            <div className="row" >
+                <form onSubmit={this.onSubmit} contactFormPopulate={this.contactToUpdate}>
+                    <h5>New Contact</h5>
+                    {this.props.update}
                     <InputGroup size="sm" className="mb-3">
                         <InputGroup.Prepend>
-                            <InputGroup.Text id="name" name="name" value={this.state.name} onChange={this.handleInputChange}>Name</InputGroup.Text>
+                            <InputGroup.Text id="name" name="name">Name</InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
                             name="name"

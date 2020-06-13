@@ -35,8 +35,14 @@ class App extends React.Component {
   }
 
   onFormSubmit = (data) => {
+    console.log(data);
+    // concat
+    let newList = this.state.contacts.concat(data);
+    // sort
+    newList.sort((a, b) => a.name.localeCompare(b.name))
+    // setstate
     this.setState({
-      contacts: this.state.contacts.concat(data)
+      contacts: newList
     })
   }
 
@@ -46,18 +52,22 @@ class App extends React.Component {
     })
   }
 
+  updateContact = (index) => {
+    // console.log(this.state.contacts[index])
+    this.deleteContact(index);
+    this.setState({ contactToUpdate: this.state.contacts[index] });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="col-md-8 mx-auto">
           <div className="row mt-5 p-5 border">
             <div className="col mx-auto">
-              <Form appPropCall={this.onFormSubmit}></Form>
+              <Form appPropCall={this.onFormSubmit} contactToUpdate={this.state.contactToUpdate}></Form>
             </div>
             <div className="col mx-auto">
-              <h2>Contacts</h2>
-              <hr />
-              <ContactList contactList={this.state.contacts} delete={this.deleteContact}></ContactList>
+              <ContactList contactList={this.state.contacts} delete={this.deleteContact} update={this.updateContact}></ContactList>
             </div>
           </div>
         </div>

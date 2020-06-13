@@ -16,6 +16,10 @@ export default class ContactCard extends Component {
         this.props.delete(this.props.id);
     }
 
+    updateCard = () => {
+        this.props.update(this.props.id);
+    }
+
     render() {
         let innerClass = 'd-none';
         if (this.state.hidden === false) {
@@ -36,7 +40,7 @@ export default class ContactCard extends Component {
                     </div>
                 </div>
                 <div className="col-md-6 justify-content-right">
-                    <button className="btn btn-outline-secondary btn-sm" onClick={this.toggle}>Full Contact</button><button className="mr-5 btn btn-outline-secondary btn-sm" onClick={this.deleteContactCard}>X</button>
+                    <button className="btn btn-outline-secondary btn-sm" onClick={this.toggle}>Open</button><button className="btn btn-outline-secondary btn-sm" onClick={this.updateCard}>Update</button><button className="btn btn-outline-secondary btn-sm" onClick={this.deleteContactCard}>X</button>
 
                 </div>
             </div >

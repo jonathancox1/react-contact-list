@@ -14,14 +14,21 @@ export default class ContactList extends Component {
         this.props.delete(index);
     }
 
+    updateContact = (index) => {
+        this.props.update(index);
+    }
+
 
     render() {
         return (
             <div>
-                {this.props.contactList.sort((a, b) => a.name.localeCompare(b.name)).map((contact, index) => {
+                <h2>Contacts</h2>
+                <hr />
+
+                {this.props.contactList.map((contact, index) => {
                     return (
                         <>
-                            <ContactCard contact={contact} key={index} id={index} delete={this.removeContact}></ContactCard>
+                            <ContactCard contact={contact} key={index} id={index} delete={this.removeContact} update={this.updateContact}></ContactCard>
                             <hr />
                         </>
                     )
