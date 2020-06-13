@@ -22,20 +22,24 @@ export default class ContactCard extends Component {
             innerClass = '';
         }
         return (
-            <>
-                <div>
-                    <button onClick={this.toggle}>Full Contact</button><button onClick={this.deleteContactCard}>X</button>
-                </div>
-                <div className={innerClass}>
-                    email: {this.props.contact.email}
-                    <br />
+            <div className="row">
+                <div className="col-md-6">
+                    {this.props.contact.name}
+                    <div className={innerClass}>
+                        email: {this.props.contact.email}
+                        <br />
                     phone: {this.props.contact.phone}
-                    <br />
+                        <br />
                     zip code: {this.props.contact.zip}
-                    <br />
+                        <br />
                     state: {this.props.contact.state}
+                    </div>
                 </div>
-            </>
+                <div className="col-md-6 justify-content-right">
+                    <button className="btn btn-outline-secondary btn-sm" onClick={this.toggle}>Full Contact</button><button className="mr-5 btn btn-outline-secondary btn-sm" onClick={this.deleteContactCard}>X</button>
+
+                </div>
+            </div >
         )
     }
 }

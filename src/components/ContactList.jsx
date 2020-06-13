@@ -9,6 +9,7 @@ export default class ContactList extends Component {
         }
     }
 
+
     removeContact = (index) => {
         this.props.delete(index);
     }
@@ -17,10 +18,9 @@ export default class ContactList extends Component {
     render() {
         return (
             <div>
-                {this.props.contactList.map((contact, index) => {
+                {this.props.contactList.sort((a, b) => a.name.localeCompare(b.name)).map((contact, index) => {
                     return (
                         <>
-                            {contact.name}
                             <ContactCard contact={contact} key={index} id={index} delete={this.removeContact}></ContactCard>
                         </>
                     )
