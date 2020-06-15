@@ -11,7 +11,6 @@ export default class Form extends Component {
             state: '',
             zip: '',
         }
-
     }
 
     handleInputChange = (e) => {

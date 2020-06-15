@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ContactCard extends Component {
+export default class FavoriteCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,17 +13,15 @@ export default class ContactCard extends Component {
     }
 
     deleteContactCard = () => {
-        this.props.delete(this.props.contact);
-        console.log(`contactcard.jsx ${this.props.contact}`)
-
+        this.props.delete(this.props.id);
     }
 
     updateCard = () => {
-        this.props.update(this.props.contact);
+        this.props.update(this.props.id);
     }
 
     addFavorite = () => {
-        this.props.favorite(this.props.contact);
+        this.props.favorite(this.props.id);
     }
 
     render() {
@@ -47,9 +45,7 @@ export default class ContactCard extends Component {
                 </div>
                 <div className="col-md-6 justify-content-right">
                     <button className="btn btn-outline-secondary btn-sm" onClick={this.toggle}>Open</button>
-                    <button className="btn btn-outline-secondary btn-sm" onClick={this.updateCard}>Update</button>
-                    <button className="btn btn-outline-secondary btn-sm" onClick={this.deleteContactCard}>X</button>
-                    <button className="btn btn-outline-secondary btn-sm" onClick={this.addFavorite}>👍</button>
+                    <button className="btn btn-outline-secondary btn-sm" onClick={this.addFavorite}>👎</button>
                 </div>
             </div >
         )

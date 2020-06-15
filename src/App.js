@@ -10,6 +10,13 @@ class App extends React.Component {
     this.state = {
       contacts: [
         {
+          name: 'Hunter B',
+          email: 'hunty@h.com',
+          phone: '280-255-1122',
+          state: 'Bed',
+          zip: '21325',
+        },
+        {
           name: 'Jon C',
           email: 'aoign@going.com',
           phone: '408-13r-1-235',
@@ -23,13 +30,6 @@ class App extends React.Component {
           state: 'Florida',
           zip: '32025',
         },
-        {
-          name: 'Hunter B',
-          email: 'hunty@h.com',
-          phone: '280-255-1122',
-          state: 'Bed',
-          zip: '21325',
-        }
       ]
     }
   }
@@ -48,14 +48,13 @@ class App extends React.Component {
 
   deleteContact = (index) => {
     this.setState({
-      contacts: this.state.contacts.filter((x => x !== this.state.contacts[index]))
+      contacts: this.state.contacts.filter((contact => contact.name !== index.name))
     })
   }
 
-  updateContact = (index) => {
-    // console.log(this.state.contacts[index])
-    this.deleteContact(index);
-    this.setState({ contactToUpdate: this.state.contacts[index] });
+  updateContact = (contact) => {
+    this.deleteContact(contact);
+    this.setState({ contactToUpdate: contact });
   }
 
   render() {
